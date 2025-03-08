@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        /* Header */
+        .header {
+            background: #007BFF;
+            color: white;
+            padding: 20px 40px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #0056b3;
+            padding: 15px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .navbar a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Main Container */
+        #container {
+            max-width: 900px;
+            margin: 50px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        /* Banner */
+        #banner {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Section Spacing */
+        .section {
+            margin-bottom: 50px;
+        }
+
+        /* Paragraphs */
+        .bodytext {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #666;
+            padding: 0 20px;
+            text-align: justify;
+            margin-top: 20px;
+        }
+
+        /* Job Openings */
+        .jobs-section {
+            padding: 30px;
+            margin-top:80px;
+            margin-bottom: 100px;
+            border-radius: 10px;
+            text-align: left;
+            
+        }
+
+        /* Section Titles */
+        h2 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #444;
+            margin-bottom: 40px;
+        }
+
+        /* Contact Button */
+        .button-container {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        button {
+            background: #007BFF;
+            color: white;
+            font-size: 18px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            font-size: 16px;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 10px;
+                text-align: center;
+            }
+
+            .navbar h1 {
+                margin-bottom: 10px;
+            }
+
+            #container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+
+            .bodytext {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">Career Guide</div>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="#">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#jobs">Jobs</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <!-- Main Container -->
+    <div id="container">
+        <h1>Welcome to Career Guide</h1>
+
+        <img id="banner" src="http://127.0.0.1:5000/static/jason-leung-F2WX4BTIkpQ-unsplash.jpg" alt="Career Guide Banner">
+
+        <h2 id="about" class="section"><strong>About Career Guide</strong></h2>
+        <p class="bodytext">
+            <strong>Join Our Team & Build Your Future! 🚀</strong><br><br><b></b>
+            We believe in innovation, growth, and excellence. We are always looking for passionate individuals who want to make a difference.<br><br></p>
+
+        </p>
+        <p class="bodytext" style="margin-bottom: 50px;"><b>
+            At Career Guide, we foster an environment where professionals can expand their knowledge, sharpen their skills, and reach new heights in their careers. Our dynamic work culture encourages creativity, collaboration, and personal development.
+       </b></p>
+
+        <h2 id="jobs" class="section"><strong>Job Openings</strong></h2>
+        <div class="jobs-section">
+            {% for job in jobs %}
+                {% include 'jobitem.html' %}
+            {% endfor %}
+        </div>
+
+        <div class="button-container" id="contact">
+            <button>Contact Us</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2025 Career Guide | <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a>
+    </div>
+</body>
+
+</html>
